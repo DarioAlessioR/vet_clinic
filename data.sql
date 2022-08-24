@@ -24,3 +24,86 @@ VALUES
 	 ('Blossom', '1998-10-13', 3, TRUE, 17.00),
 	 ('Ditto', '2022-05-14', 4, TRUE, 22.00);
 
+/* Insert the following data into the owners table (day 3) */
+
+INSERT INTO owners (full_name, age)
+    VALUES
+	('Sam Smith', 34),
+	('Jennifer Orwell', 19),
+	('Bob', 45),
+	('Melody Pond', 77),
+	('Dean Winchester', 14),
+	('Jodie Whittaker', 38);
+
+/* Insert the following data into the species table (day 3) */
+INSERT INTO species (name)
+    VALUES
+	('Pokemon'),
+	('Digimon');
+
+/* Modify your inserted animals so it includes the species_id value:
+If the name ends in "mon" it will be Digimon
+All other animals are Pokemon (day 3)*/
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET species_id = (SELECT species.id FROM species WHERE species.name = 'Pokemon')  
+	WHERE name NOT LIKE '%mon';
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET species_id = (SELECT sepecies.id FROM species WHERE species.name = 'Digimon')
+	WHERE name LIKE '%mon';
+
+COMMIT;
+
+/* Modify your inserted animals to include owner information (owner_id):
+Sam Smith owns Agumon.
+Jennifer Orwell owns Gabumon and Pikachu.
+Bob owns Devimon and Plantmon.
+Melody Pond owns Charmander, Squirtle, and Blossom.
+Dean Winchester owns Angemon and Boarmon. (day 3)*/
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET owner_id = (SELECT owners.id FROM owners WHERE owners.full_name = 'Sam Smith')
+    WHERE name = 'Agumon';
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET owner_id = (SELECT owners.id FROM owners WHERE owners.full_name = 'Jennifer Orwell')
+    WHERE name = 'Gabumon' OR name = 'Pikachu';
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET owner_id = (SELECT owners.id FROM owners WHERE owners.full_name = 'Bob')
+    WHERE name IN ('Devimon', 'Plantmon');
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET owner_id = (SELECT owners.id FROM owners WHERE owners.full_name = 'Melody Pond')
+    WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+UPDATE animals
+    SET owner_id = (SELECT owners.id FROM owners WHERE owners.full_name = 'Dean Winchester')
+    WHERE name IN ('Angemon', 'Boarmon');
+
+COMMIT;
