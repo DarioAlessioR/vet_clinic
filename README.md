@@ -8,10 +8,15 @@ Create a relational database according to the following list of activities:
 Projects list:
 
 Project 1: create animals table.
+
 Project 2: query and update animals table.
+
 Project 3: query multiple tables.
+
 Project 4: add "join table" for visits.
+
 Project 5: database performance audit.
+
 Exercise: add database schema diagram.
 
 ## Built With:
