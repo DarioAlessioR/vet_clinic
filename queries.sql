@@ -116,3 +116,51 @@ SELECT MIN(weight_kg), MAX(weight_kg), species FROM animals GROUP BY species;
 /* What is the average number of escape attempts per animal type of those born between 1990 and 2000? */
 SELECT AVG(escape_attempts) AS AVERAGE_ESCAPES, species FROM animals
     WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+/* Write queries (using JOIN) to answer the following questions: (day 3) */
+
+/* What animals belong to Melody Pond? */
+SELECT name, full_name FROM animals JOIN owners
+    ON animals.owner_id = owners.id
+    WHERE owners.full_name = 'Melody Pond';
+
+/* List of all animals that are pokemon (their type is Pokemon).*/
+SELECT animals.name FROM animals JOIN species
+    ON animals.species_id = species.id
+	WHERE species.name = 'Pokemon';
+
+/* List all owners and their animals, remember to include those that don't own any animal.*/
+SELECT owners.full_name, animals.name FROM owners LEFT JOIN animals
+    ON animals.owner_id = owners.id;
+
+/* or : */
+SELECT 
+	owners.full_name, STRING_AGG (animals.name, ', ') as animals
+    FROM owners
+    LEFT JOIN animals ON owners.id = animals.owner_id
+    GROUP BY owners.full_name;
+
+/* How many animals are there per species?*/
+SELECT COUNT(animals.name), species.name FROM animals
+   JOIN species
+   ON animals.species_id = species.id
+   GROUP BY species.name;
+
+
+/* List all Digimon owned by Jennifer Orwell.*/
+SELECT animals.name, owners.full_name FROM animals
+    JOIN owners ON animals.owner_id = owners.id
+    JOIN species ON species.id = animals.species_id
+	WHERE owners.full_name = 'Jennifer Orwell' AND species.name = 'Digimon';
+
+/* List all animals owned by Dean Winchester that haven't tried to escape.*/
+SELECT animals.name, owners.full_name FROM animals
+    JOIN owners ON animals.owner_id = owners.id
+	WHERE animals.escape_attempts = 0 AND owners.full_name = 'Dean Winchester';
+
+/* Who owns the most animals?*/
+SELECT owners.full_name, COUNT(animals.id) FROM owners
+    JOIN animals ON animals.owner_id = owners.id
+	GROUP BY owners.full_name
+	ORDER BY COUNT(animals.id) DESC
+	LIMIT 1;
