@@ -45,6 +45,54 @@ ALTER TABLE animals ADD COLUMN species_id INT
 ALTER TABLE animals ADD COLUMN owner_id INT
 	REFERENCES owners(id);
 
+/* Day 4
+Create a table named vets with the following columns:
+id: integer (set it as autoincremented PRIMARY KEY)
+name: string
+age: integer
+date_of_graduation: date
+*/ 
+
+CREATE TABLE vets(
+    id INT GENERATED ALWAYS AS IDENTITY
+	(START WITH 1 INCREMENT BY 1),
+	name VARCHAR(100) NOT NULL,
+	age INT,
+	date_of_graduation DATE,
+	PRIMARY KEY (id)
+);
 
 
+/* Day 4
+Create a "join table" called specializations
+*/ 
 
+CREATE TABLE specializations(
+    vets_id INT,
+	species_id INT,
+	PRIMARY KEY(vets_id, species_id)
+);
+
+ALTER TABLE specializations
+ADD FOREIGN KEY(species_id) REFERENCES species(id);
+
+ALTER TABLE specializations
+ADD FOREIGN KEY(vets_id) REFERENCES vets(id);
+
+/* Day 4
+Create a "join table" called visits
+*/ 
+
+CREATE TABLE visits(
+    id SERIAL NOT NULL,
+    vets_id INT,
+	animals_id INT,
+    date_of_visit DATE,
+	PRIMARY KEY(id)
+);
+
+ALTER TABLE visits
+ADD FOREIGN KEY(vets_id) REFERENCES vets(id);
+
+ALTER TABLE visits
+ADD FOREIGN KEY(animals_id) REFERENCES animals(id);
