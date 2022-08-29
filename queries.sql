@@ -237,3 +237,20 @@ WHERE vets.name = 'Maisy Smith'
 GROUP BY species.name
 ORDER BY COUNT(animals.species_id) DESC
 LIMIT 1;
+
+-- The following queries are taking too much time (1 sec = 1000ms can be considered as too much time
+-- for database query). Try them on your machine to confirm it: (week 2, day 1)
+
+SELECT COUNT(*) FROM visits where animals_id = 4;
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animals_id = 4;
+
+CREATE INDEX animals_id_asc ON visits(animals_id ASC);
+
+EXPLAIN ANALYZE SELECT * FROM visits where vets_id = 2;
+
+CREATE INDEX vets_id_asc ON visits(vets_id ASC);
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
+
+CREATE INDEX owners_email_asc ON owners(email ASC);

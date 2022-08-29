@@ -96,3 +96,9 @@ ADD FOREIGN KEY(vets_id) REFERENCES vets(id);
 
 ALTER TABLE visits
 ADD FOREIGN KEY(animals_id) REFERENCES animals(id);
+
+-- Add an extra column to the owners table: (Week 2, day 1)*/
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
