@@ -21,7 +21,6 @@ Exercise: add database schema diagram.
 
 ## Database diagram:
 ![](images/ERD_diagram.png)
-![](https://file%2B.vscode-resource.vscode-cdn.net/c%3A/Users/Dario/Documents/MICROVERSE/Module4/vet_clinic/images/ERD_diagram.png?version%3D1661875069553)
 
 https://drawsql.app/teams/dario/diagrams/vet-clinic/embed
 
