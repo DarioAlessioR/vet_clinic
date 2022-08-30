@@ -19,6 +19,11 @@ Project 5: database performance audit.
 
 Exercise: add database schema diagram.
 
+## Database diagram:
+Please visit the following link to see diagram:
+
+https://drawsql.app/teams/dario/diagrams/vet-clinic
+
 ## Built With:
 Major languages: PostgreSQL
 Technologies used: VSC, Github, Gitflow
