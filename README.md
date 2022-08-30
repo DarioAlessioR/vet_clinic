@@ -20,7 +20,10 @@ Project 5: database performance audit.
 Exercise: add database schema diagram.
 
 ## Database diagram:
-Please visit the following link to see diagram:
+
+https://drawsql.app/teams/dario/diagrams/vet-clinic/embed
+
+Please visit the following link to see diagram at drawSQL site:
 
 https://drawsql.app/teams/dario/diagrams/vet-clinic
 
