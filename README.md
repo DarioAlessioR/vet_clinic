@@ -21,11 +21,11 @@ Exercise: add database schema diagram.
 
 ## Database diagram:
 
+C:\Users\Dario\Documents\MICROVERSE\Module4\vet_clinic\images\ERD_diagram.png
+
+images\ERD_diagram.png
+
 https://drawsql.app/teams/dario/diagrams/vet-clinic/embed
-
-Please visit the following link to see diagram at drawSQL site:
-
-https://drawsql.app/teams/dario/diagrams/vet-clinic
 
 ## Built With:
 Major languages: PostgreSQL
