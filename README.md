@@ -21,9 +21,7 @@ Exercise: add database schema diagram.
 
 ## Database diagram:
 
-C:\Users\Dario\Documents\MICROVERSE\Module4\vet_clinic\images\ERD_diagram.png
-
-images\ERD_diagram.png
+https://github.com/DarioAlessioR/vet_clinic/blob/844c6cab1b67ac9d4392a850acfeb021f9a6bf18/images/ERD_diagram.png
 
 https://drawsql.app/teams/dario/diagrams/vet-clinic/embed
 
